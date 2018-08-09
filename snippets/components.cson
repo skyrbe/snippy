@@ -1,0 +1,196 @@
+'.source.js, .source.jsx':
+  'Sakha:Redux:Form':
+    'prefix': 'form'
+    'description': 'Simple Redux-Form with basic dependencies imported'
+    'leftLabelHTML': 'ReduxForm'
+    'rightLabelHTML': 'Seeder:Redux'
+    'body': """
+        import React from 'react';
+        import { reduxForm } from 'redux-form';
+        import { ${1:validationFields} } from '@common/FormValidation';
+        import Textfield from '@common/Textfield';
+        import { ERROR_LABEL, APP_CONFIG } from '@constants';
+
+        const ${2:ComponentName} = (props) => {
+          const {
+            handleSubmit,
+            loading
+          } = props;
+
+          return (
+            <form onSubmit={handleSubmit}>
+
+            </form>
+          );
+        };
+
+        export default (reduxForm({
+          form: '${3:formIdentifier}' // a unique identifier for this form
+        })(${2:ComponentName}));
+    """
+  'Sakha:ReduxForm:TextField':
+    'prefix': 'textfield'
+    'description': 'Creates a Textfield component based on the component found in src/components/common/formElements/Textfield'
+    'leftLabelHTML': 'ReduxFormField'
+    'rightLabelHTML': 'Seeder:Redux'
+    'body': """
+        <Textfield
+          name="${1:fieldName}"
+          type="${2:inputType}"
+          label="${3:Placeholder Label}"
+          errorLabel="ERROR_LABEL.${4:LABEL}"
+          validate={[${5:validations}]}
+        />
+    """
+  'Sakha:ReduxForm:RadioGroup':
+    'prefix': 'radiogroup'
+    'description': 'Creates a RadioGroup component based on the component found in src/components/common/formElements/Radio'
+    'leftLabelHTML': 'ReduxFormField'
+    'rightLabelHTML': 'Seeder:Redux'
+    'body': """
+        <RadioGroup
+          name="${1:fieldName}"
+          label="${2:Placeholder Label}"
+          errorLabel="${3:Required Error Label} "
+          externalLabel={`${props.form}`}
+          validate={[${4:validations}]}
+          customClass="${5:customParentClasses}"
+          options={${6:radioOptions}}
+        />
+    """
+  'Sakha:ReduxForm:Checkbox':
+    'prefix': 'checkbox'
+    'description': 'Creates a Checkbox component based on the component found in src/components/common/formElements/Checkbox'
+    'leftLabelHTML': 'ReduxFormField'
+    'rightLabelHTML': 'Seeder:Redux'
+    'body': """
+        <Checkbox
+          name="${1:fieldName}"
+          label="${2:Placeholder Label}"
+          errorLabel="${3:Error Label} "
+          validate={[${4:validations}]}
+        />
+    """
+  'Sakha:ReduxForm:Select':
+    'prefix': 'select'
+    'description': 'Creates a Select component based on the component found in src/components/common/formElements/SelectBox'
+    'leftLabelHTML': 'ReduxFormField'
+    'rightLabelHTML': 'Seeder:Redux'
+    'body': """
+        <SelectBox
+          name="${1:fieldName}"
+          errorLabel="${2:Error Label} "
+          options={${3:listOfOptions}}
+          defaultLabel="${4:Default Label}"
+          validate={[${5:validations}]}
+        />
+    """
+  'Sakha:ReduxForm:DateTimepicker':
+    'prefix': 'datepicker'
+    'description': 'Creates a DateTimepicker component based on the component found in src/components/common/formElements/ReactWidgets/DateTimePicker'
+    'leftLabelHTML': 'ReduxFormField'
+    'rightLabelHTML': 'Seeder:Redux'
+    'body': """
+        <DateTimepicker
+          name="${1:fieldName}"
+          label="${2:Placeholder Label}"
+          errorLabel="${3:Error Label} "
+          showTime={${4:timeBoolean}}
+          validate={[${5:validations}]}
+        />
+    """
+  'Sakha:ReduxForm:TextArea':
+    'prefix': 'textarea'
+    'description': 'Creates a TextArea component based on the component found in src/components/common/formElements/TextArea'
+    'leftLabelHTML': 'ReduxFormField'
+    'rightLabelHTML': 'Seeder:Redux'
+    'body': """
+        <Textarea
+          name="${1:fieldName}"
+          label="${2:Placeholder Label}"
+          errorLabel="${3:Error Label} "
+          validate={[${4:validations}]}
+        />
+    """
+  'Sakha:ReduxForm:FormSubmit':
+    'prefix': 'submit'
+    'description': 'Creates a submit button for the redux form'
+    'leftLabelHTML': 'ReduxFormSubmit'
+    'rightLabelHTML': 'Seeder:Redux'
+    'body': """
+        <button
+          disabled={loading}
+          type="submit"
+        >
+          ${1:buttonText}
+        </button>
+    """
+  'Sakha:React:Container':
+    'prefix': 'container'
+    'description': 'Creates a default container'
+    "leftLabelHTML": "container"
+    "rightLabelHTML": "Seeder:React"
+    'body': """
+        import React, { Component } from 'react';
+        import PropTypes from 'prop-types';
+        import { connect } from 'react-redux';
+        import { bindActionCreators } from 'redux';
+
+        class ${1:Class} extends Component {
+          constructor(props) {
+            super(props);
+            this.state = {};
+          }
+          render() {
+            return (
+              <div className="${2:class-name}">
+                ${3:content}
+              </div>
+            );
+          }
+        }
+
+        function mapStateToProps({}){
+          return {};
+        }
+        function mapDispatchToProps(dispatch){
+          return bindActionCreators({},dispatch);
+        }
+        export default connect (mapStateToProps,mapDispatchToProps)(${1:Class});
+    """
+  'Sakha:React:Component':
+    'prefix': 'component'
+    'description': 'Creates a default stateful component'
+    "leftLabelHTML": "component"
+    "rightLabelHTML": "Seeder:React"
+    'body': """
+        import React, { Component } from 'react';
+
+        export default class ${1:Class} extends Component {
+          render() {
+            return (
+              <div className="${2:className}">
+                ${3:content}
+              </div>
+            );
+          }
+        }
+    """
+  'Sakha:React:StatelessComponent':
+    'prefix': 'statelesscomponent'
+    'description': 'Creates a default stateless component'
+    "leftLabelHTML": "component"
+    "rightLabelHTML": "Seeder:React"
+    'body': """
+        import React from 'react';
+
+        const ${1:ComponentName} = (${2:props}) => {
+          return (
+            <div className="${3:className}">
+              ${4:content}
+            </div>
+          );
+        }
+
+        export default ${1:ComponentName};
+    """

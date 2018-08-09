@@ -1,0 +1,20 @@
+{
+  "name": "snippy",
+  "main": "./lib/snippy",
+  "version": "1.13.0",
+  "description": "Seeder Project react redux snippets",
+  "keywords": [
+    "react",
+    "redux",
+    "atom",
+    "snippet",
+    "snippets",
+    "seeder"
+  ],
+  "repository": "https://github.com/skyrbe/snippy",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {}
+}
