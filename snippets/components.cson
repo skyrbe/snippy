@@ -207,3 +207,19 @@
 
         export default ${1:ComponentName};
     """
+  'Sakha:Redux:AsyncActionCreator':
+    'prefix': 'AsyncActionCreator'
+    'description': 'Creates an Async and Sync Action'
+    "leftLabelHTML": "action"
+    "rightLabelHTML": "Seeder:React"
+    'body': """
+        export const ${1:actionName}Thunk = (data) => {
+          return async(dispatch) => {
+            let response = await ${2:fetchAPI};
+            let responseJSON = await response.json();
+            await dispatch(${1:actionName}(responseJSON));
+          }
+        }
+
+        const ${1:actionName} = (data) => ({type: types.${3:ACTION_NAME}, data});
+    """
