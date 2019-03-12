@@ -143,13 +143,16 @@
           }
           render() {
             return (
-              <div className="${2:class-name}">
-                ${3:content}
+              <div className="${4:class-name}">
+                ${5:content}
               </div>
             );
           }
         }
 
+        ${1:Class}.propTypes = {
+          ${2:key}: PropTypes.${3:value}.isRequired
+        };
         function mapStateToProps({}){
           return {};
         }
@@ -165,16 +168,21 @@
     "rightLabelHTML": "Seeder:React"
     'body': """
         import React, { Component } from 'react';
+        import PropTypes from 'prop-types';
 
-        export default class ${1:Class} extends Component {
+        class ${1:Class} extends Component {
           render() {
             return (
-              <div className="${2:className}">
-                ${3:content}
+              <div className="${4:className}">
+                ${5:content}
               </div>
             );
           }
         }
+        ${1:Class}.propTypes = {
+          ${2:key}: PropTypes.${3:value}.isRequired
+        };
+        export default ${1:Class};
     """
   'Sakha:React:StatelessComponent':
     'prefix': 'statelesscomponent'
@@ -183,14 +191,19 @@
     "rightLabelHTML": "Seeder:React"
     'body': """
         import React from 'react';
-
+        import PropTypes from 'prop-types';
+        
         const ${1:ComponentName} = (${2:props}) => {
           return (
             <div className="${3:className}">
               ${4:content}
             </div>
           );
-        }
+        };
+
+        ${1:ComponentName}.propTypes = {
+          ${5:key}: PropTypes.${6:value}.isRequired
+        };
 
         export default ${1:ComponentName};
     """
