@@ -192,7 +192,7 @@
     'body': """
         import React from 'react';
         import PropTypes from 'prop-types';
-        
+
         const ${1:ComponentName} = (${2:props}) => {
           return (
             <div className="${3:className}">

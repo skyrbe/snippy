@@ -1,7 +1,7 @@
 {
   "name": "snippy",
   "main": "./lib/snippy",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Seeder Project react redux snippets",
   "keywords": [
     "react",
